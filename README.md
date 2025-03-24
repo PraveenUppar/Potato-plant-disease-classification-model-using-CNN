@@ -1,0 +1,1 @@
+# Potato-plant-disease-classification-model-using-CNN
