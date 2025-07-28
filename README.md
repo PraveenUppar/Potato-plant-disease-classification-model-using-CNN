@@ -2,7 +2,12 @@
 
 **Introduction**
 
-In the agriculture industry, farmers often face challenges in identifying diseases in potato plants, such as early blight, late blight, or determining if the plant is healthy. This uncertainty makes it difficult for farmers to apply the appropriate fertilizers and treatments, impacting crop yield and quality. To address this issue, we have developed a deep learning model using TensorFlow to classify images of potato plants, aiding in the accurate identification of diseases. By leveraging machine learning technology, our solution aims to improve agricultural practices, optimize resource allocation, and ultimately enhance the production of healthy potato plants.
+In the agriculture industry, farmers often face challenges in identifying diseases in potato plants, such as early blight, late blight, or determining if the plant is healthy. This uncertainty makes it difficult for farmers to apply the appropriate fertilizers and treatments, impacting crop yield and quality. By leveraging machine learning technology, our solution aims to improve agricultural practices, optimize resource allocation, and ultimately enhance the production of healthy potato plants.
+
+Web applications powered by a Convolutional Neural Network (CNN) deep learning model to provide real-time classification of potato plant diseases (healthy, late blight, early blight), empowering farmers with early detection for intervention and prevention.
+Trained the model on a 9,000-image dataset, meticulously divided into three classes (healthy, late blight, early blight), using a 70/30 train-test split for robust validation.
+Improved model accuracy from 66.8% to 86.9% in Stage 1 and further to 89.2% in Stage 2, achieving a 33% overall increase.
+Optimized training by reducing epochs from 9 to 5, effectively preventing model overfitting and memorization of training data, and cutting training time from 20 minutes to 11 minutes (a 45% reduction).
 
 <br />
 
