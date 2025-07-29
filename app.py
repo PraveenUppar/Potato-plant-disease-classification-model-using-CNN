@@ -121,7 +121,7 @@ add_vertical_space(3)
 st.markdown(f'<h2 class="section-header">Upload Image for Prediction</h2>', unsafe_allow_html=True)
 col1, col2, col3 = st.columns([0.1, 0.9, 0.1])
 with col2:
-    input_image = st.file_uploader(label='Choose a Potato Leaf Image', type=['jpg', 'jpeg', 'png'])
+    input_image = st.file_uploader(label='', type=['jpg', 'jpeg', 'png'])
 
 if input_image is not None:
     st.info("Processing your image...")
