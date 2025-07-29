@@ -9,10 +9,10 @@ filterwarnings('ignore')
 
 
 def streamlit_config():
-    # page configuration
+    # Page configuration
     st.set_page_config(page_title='Potato Disease Classifier', layout='centered')
 
-    # page header transparent color
+    # Page header transparent color and custom CSS
     page_background_color = """
     <style>
     [data-testid="stHeader"] {
@@ -20,42 +20,42 @@ def streamlit_config():
     }
     .main-header {
         text-align: center;
-        color: #FF4B4B; /* Streamlit's default orange for accent */
-        font-size: 3.5em; /* Larger font size for main title */
+        color: #2C3E50; /* Darker tone for a professional look */
+        font-size: 3.5em;
         font-weight: bold;
         margin-bottom: 0px;
         padding-bottom: 0px;
     }
     .tagline {
         text-align: center;
-        color: #6C757D; /* A subtle grey for tagline */
+        color: #6C757D;
         font-size: 1.2em;
         margin-top: 0px;
     }
     .section-header {
-        color: #2C3E50; /* Darker color for section headers */
+        color: #2C3E50;
         font-size: 2em;
-        border-bottom: 2px solid #FF4B4B; /* Underline with accent color */
+        border-bottom: 2px solid #FF4B4B; /* Keeping the accent color for underlines */
         padding-bottom: 5px;
         margin-top: 30px;
         margin-bottom: 20px;
     }
-    .stButton>button {
-        background-color: #4CAF50; /* Green button */
+    .stButton > button {
+        background-color: #4CAF50; /* Green for action buttons */
         color: white;
         border-radius: 5px;
         padding: 10px 20px;
         font-size: 1.1em;
     }
     .prediction-text {
-        color: #FF4B4B; /* Orange for prediction */
+        color: #FF4B4B; /* Accent color for prediction */
         font-size: 1.8em;
         font-weight: bold;
         text-align: center;
     }
     .info-box {
-        background-color: #E6F3F7; /* Light blue background for info boxes */
-        border-left: 5px solid #007BFF; /* Blue border */
+        background-color: #E6F3F7;
+        border-left: 5px solid #007BFF;
         padding: 15px;
         margin-bottom: 15px;
         border-radius: 5px;
@@ -93,117 +93,26 @@ def prediction(image_path, class_names=['Potato___Early_blight', 'Potato___Late_
 
     except Exception as e:
         st.error(f"Error loading model or making prediction: {e}")
-        st.warning("Please ensure 'model.h5' is in the correct directory.")
+        st.warning("Please ensure 'model.h5' is in the correct directory relative to your application script.")
 
 
 # --- Hero Section ---
-st.markdown(f'<h1 class="main-header">🥔 Potato Disease Classification</h1>', unsafe_allow_html=True)
-st.markdown(f'<p class="tagline">Leveraging Deep Learning for Healthier Potato Crops</p>', unsafe_allow_html=True)
+st.markdown(f'<h1 class="main-header">Potato Disease Classification</h1>', unsafe_allow_html=True)
+st.markdown(f'<p class="tagline">An AI-powered solution for early detection in potato plants</p>', unsafe_allow_html=True)
 add_vertical_space(2)
 
 
-# --- Introduction Section ---
-st.markdown(f'<h2 class="section-header">Introduction</h2>', unsafe_allow_html=True)
+# --- Project Overview Section ---
+st.markdown(f'<h2 class="section-header">Project Overview</h2>', unsafe_allow_html=True)
 st.markdown("""
-In the agriculture industry, farmers often face challenges in identifying diseases in potato plants, such as early blight, late blight, or determining if the plant is healthy. This uncertainty makes it difficult for farmers to apply the appropriate fertilizers and treatments, impacting crop yield and quality. By leveraging machine learning technology, our solution aims to improve agricultural practices, optimize resource allocation, and ultimately enhance the production of healthy potato plants.
+In agriculture, identifying potato plant diseases like early blight, late blight, or determining plant health is crucial for effective crop management. This project addresses these challenges by applying **deep learning** to enable **real-time disease classification**, helping farmers optimize resource allocation and enhance crop yield.
 
-This web application, powered by a Convolutional Neural Network (CNN) deep learning model, provides real-time classification of potato plant diseases (healthy, late blight, early blight), empowering farmers with early detection for intervention and prevention.
-""")
-add_vertical_space(2)
+This **web application**, powered by a **Convolutional Neural Network (CNN)**, classifies potato plant diseases (healthy, late blight, early blight) to facilitate early intervention and prevention. The model was trained on a **9,000-image dataset** (70/30 train-test split) and achieved significant performance improvements:
 
-# --- Technologies Section ---
-st.markdown(f'<h2 class="section-header">Key Technologies & Skills</h2>', unsafe_allow_html=True)
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.markdown("🌐 Python")
-    st.markdown("🧠 TensorFlow")
-    st.markdown("🖼️ Keras")
-with col2:
-    st.markdown("🔢 NumPy")
-    st.markdown("📊 Matplotlib")
-    st.markdown("🚀 Streamlit")
-with col3:
-    st.markdown("💡 CNN (Convolutional Neural Network)")
-    st.markdown("➕ Streamlit-Extras")
-add_vertical_space(2)
+* **Accuracy:** Improved from 66.8% to **89.2%**.
+* **Training Efficiency:** Epochs reduced from 9 to **5**, cutting training time by **45%** (from 20 to 11 minutes) while preventing overfitting.
 
-# --- Installation Section ---
-st.markdown(f'<h2 class="section-header">Installation</h2>', unsafe_allow_html=True)
-with st.expander("Show Installation Steps"):
-    st.markdown("""
-    To run this project, you need to install the following packages. It's recommended to use a `requirements.txt` file.
-
-    1.  **Create `requirements.txt`:**
-        ```
-        numpy
-        Pillow
-        tensorflow
-        streamlit
-        streamlit-extras
-        ```
-    2.  **Install packages:**
-        ```bash
-        pip install -r requirements.txt
-        ```
-    """)
-add_vertical_space(2)
-
-# --- Usage Section ---
-st.markdown(f'<h2 class="section-header">Usage</h2>', unsafe_allow_html=True)
-with st.expander("Show Usage Instructions"):
-    st.markdown("""
-    To use this project, follow these steps:
-
-    1.  **Ensure `model.h5` is in the same directory** as your `app.py` script.
-    2.  **Run the Streamlit app:**
-        ```bash
-        streamlit run app.py
-        ```
-    3.  **Access the app** in your browser at `http://localhost:8501` (or the address shown in your terminal).
-    """)
-add_vertical_space(2)
-
-# --- Features Section ---
-st.markdown(f'<h2 class="section-header">Features</h2>', unsafe_allow_html=True)
-
-st.markdown("""
-Our solution covers the entire machine learning pipeline, from data acquisition to deployment:
-""")
-
-st.subheader("1. Data Collection")
-st.markdown("""
-We obtained the potato disease image dataset from Kaggle, a renowned platform for datasets and data science resources. This dataset consists of images depicting diseased potato plant leaves, meticulously labeled into categories such as early blight, healthy, and late blight.
-
-This collection serves as a valuable asset for training and evaluating our deep learning model, facilitating the development of an effective solution for potato disease classification.
-📙 **Dataset Link:** [Kaggle Plant Disease Dataset](https://www.kaggle.com/datasets/emmarex/plantdisease)
-""")
-# st.image("images/dataset_example.png", caption="Example images from the dataset", width=600) # Uncomment if you have an image
-
-st.subheader("2. Preprocessing")
-st.markdown("""
-This phase prepares the raw image data for model training:
-""")
-st.markdown("- **Image Reading and Resizing:** We leverage TensorFlow to read all images from the directory. Each image undergoes resizing to a standardized dimension of **256x256 pixels**. Furthermore, we organize the processed images into batches with a size of **32**, thus forming a structured dataset ready for subsequent analysis.")
-st.markdown("- **Dataset Splitting:** To facilitate comprehensive model evaluation, we partition the dataset into three distinct subsets: **training, validation, and testing**.")
-st.markdown("- **Data Pipeline Optimization:** We optimize the data pipeline using TensorFlow's built-in functionalities. The `cache` function is employed to circumvent repetitive loading and reading of training images, and the `prefetch` function enhances training speed by proactively preparing subsequent batches.")
-
-st.subheader("3. Model Building and Training")
-st.markdown("""
-This section details the core of our deep learning solution:
-""")
-st.markdown("- **Model Building:** We construct the model architecture using Keras, incorporating layers for resizing, rescaling, random flip, and random rotation for robust preprocessing. A **Convolutional Neural Network (CNN)** architecture is implemented, comprising convolutional layers, pooling layers, and dense layers with adjustable filters/units and activation functions.")
-st.markdown("- **Training:** We utilize the **Adam optimizer**, **sparse_categorical_crossentropy loss function**, and **Accuracy metrics**. The model was trained on a **9,000-image dataset** (70/30 train-test split).")
-
-st.markdown("""
-    **Model Performance Improvements:**
-    * **Improved Accuracy:** From **66.8% to 86.9% in Stage 1** and further to **89.2% in Stage 2**, achieving a **33% overall increase**.
-    * **Optimized Training:** Reduced epochs from **9 to 5**, preventing overfitting and cutting training time from **20 minutes to 11 minutes** (a 45% reduction).
-""")
-# st.image("images/model_architecture.png", caption="Simplified CNN Architecture", width=600) # Uncomment if you have an image
-
-st.subheader("4. Model Deployment and Inference")
-st.markdown("""
-Following the completion of model training and evaluation, the trained model is saved to enable seamless deployment and inference on new images for classification purposes. This user-friendly Streamlit application allows users to upload new images and obtain real-time classification results.
+The core technologies employed include **Python, TensorFlow, Keras, NumPy, Matplotlib, and Streamlit**. The dataset was sourced from Kaggle.
 """)
 add_vertical_space(3)
 
@@ -225,4 +134,4 @@ else:
 
 add_vertical_space(5)
 st.markdown("---")
-st.markdown(f'<p style="text-align: center; color: #888888; font-size: 0.9em;">Developed with ❤️ using Streamlit and TensorFlow.</p>', unsafe_allow_html=True)
+st.markdown(f'<p style="text-align: center; color: #888888; font-size: 0.9em;">Developed using Streamlit and TensorFlow.</p>', unsafe_allow_html=True)
