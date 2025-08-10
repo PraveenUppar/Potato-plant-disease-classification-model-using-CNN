@@ -1,27 +1,27 @@
 # Potato Disease Classification using Deep Learning
 
-**Introduction**
+Web applications powered by a Convolutional Neural Network (CNN) deep learning model to provide real-time classification of potato plant diseases (healthy, late blight, early blight), empowering farmers with early detection for intervention and prevention.
+
+## Table of Contents
+
+1. [Introduction](introduction)
+2. [Key Technologies and Skills](Skills)
+3. [Installation](Installation)
+4. [Dataset](Dataset)
+5. [Workflow](Workflow)
+6. [Test](Test)
+7. [Features](Features)
+
+## Introduction
 
 In the agriculture industry, farmers often face challenges in identifying diseases in potato plants, such as early blight, late blight, or determining if the plant is healthy. This uncertainty makes it difficult for farmers to apply the appropriate fertilizers and treatments, impacting crop yield and quality. By leveraging machine learning technology, our solution aims to improve agricultural practices, optimize resource allocation, and ultimately enhance the production of healthy potato plants.
 
-Web applications powered by a Convolutional Neural Network (CNN) deep learning model to provide real-time classification of potato plant diseases (healthy, late blight, early blight), empowering farmers with early detection for intervention and prevention.
 Trained the model on a 9,000-image dataset, meticulously divided into three classes (healthy, late blight, early blight), using a 70/30 train-test split for robust validation.
 Improved model accuracy from 66.8% to 86.9% in Stage 1 and further to 89.2% in Stage 2, achieving a 33% overall increase.
 Optimized training by reducing epochs from 9 to 5, effectively preventing model overfitting and memorization of training data, and cutting training time from 20 minutes to 11 minutes (a 45% reduction).
 
-<br />
 
-**Table of Contents**
-
-1. Key Technologies and Skills
-2. Installation
-3. Usage
-4. Features
-
-
-<br />
-
-**Key Technologies and Skills**
+## Key Technologies and Skills
 - Python
 - TensorFlow
 - Convolutional Neural Network (CNN)
@@ -30,38 +30,31 @@ Optimized training by reducing epochs from 9 to 5, effectively preventing model 
 - Matplotlib
 - Streamlit
 
-<br />
 
-**Installation**
+## Installing and Running
 
-To run this project, you need to install the following packages:
-
-```python
-pip install tensorflow
-pip install opencv-python
-pip install pillow
-pip install numpy
-pip install matplotlib
-pip install streamlit
-pip install streamlit_extras
+```
+pip install -r requirements.txt
+```
+```
+streamlit run app.py
 ```
 
-<br />
+## Dataset
+![datasetSpit](./screenshots/image.png) 
+![Dataset](./screenshots/dataset.png)
 
-**Usage**
+## Workflow
+![workflow](./screenshots/workflow.png) 
 
-To use this project, follow these steps:
+## Test
+![test1](./screenshots/test1.png)
+![test2](./screenshots/test2.png)
 
-1. Install the required packages: ```pip install -r requirements.txt```
-2. Run the Streamlit app: ```streamlit run app.py```
-3. Access the app in your browser at ```http://localhost:8501```
-
-<br />
-
-**Features**
+## Features
 
 #### Data Collection:
-   - We obtained the potato disease image dataset from Kaggle, a renowned platform for datasets and data science resources. This dataset consists of images depicting diseased potato plant leaves, meticulously labeled into categories such as early blight, healthy, and late blight.
+   - This dataset consists of images depicting diseased potato plant leaves, meticulously labeled into categories such as early blight, healthy, and late blight.
 
    - This collection serves as a valuable asset for training and evaluating our deep learning model, facilitating the development of an effective solution for potato disease classification.
 
@@ -70,16 +63,16 @@ To use this project, follow these steps:
 
 #### Preprocessing:
 
-   - **Image Reading and Resizing:** We initiate the preprocessing phase by leveraging TensorFlow to read all images from the directory. Each image undergoes resizing to a standardized dimension of 256x256 pixels. Furthermore, we organize the processed images into batches with a size of 32, thus forming a structured dataset ready for subsequent analysis.
+   - **Image Reading and Resizing:** Initiate the preprocessing phase by leveraging TensorFlow to read all images from the directory. Each image undergoes resizing to a standardized dimension of 256x256 pixels. Furthermore, organize the processed images into batches with a size of 32, thus forming a structured dataset ready for subsequent analysis.
 
-   - **Dataset Splitting:** To facilitate comprehensive model evaluation, we partition the dataset into three distinct subsets: training, validation, and testing. This segmentation ensures the robustness of our model's performance assessment by enabling separate training, validation, and testing phases, thus minimizing the risk of overfitting and enhancing generalization capabilities.
+   - **Dataset Splitting:** To facilitate comprehensive model evaluation, partition the dataset into three distinct subsets: training, validation, and testing. This segmentation ensures the robustness of our model's performance assessment by enabling separate training, validation, and testing phases, thus minimizing the risk of overfitting and enhancing generalization capabilities.
 
-   - **Data Pipeline Optimization:** In pursuit of efficient model training, we optimize the data pipeline using TensorFlow's built-in functionalities. The `cache` function is strategically employed to circumvent the repetitive loading and reading of training images across epochs. Concurrently, the `prefetch` function enhances training speed by proactively preparing subsequent batches of training images. These optimizations collectively streamline the training process, resulting in significant time savings and improved computational efficiency.
+   - **Data Pipeline Optimization:** In pursuit of efficient model training, optimize the data pipeline using TensorFlow's built-in functionalities. The `cache` function is strategically employed to circumvent the repetitive loading and reading of training images across epochs. Concurrently, the `prefetch` function enhances training speed by proactively preparing subsequent batches of training images. These optimizations collectively streamline the training process, resulting in significant time savings and improved computational efficiency.
 
 
 #### Model Building and Training:
 
-   - **Model Building:** We construct the model architecture using Keras, incorporating layers for resizing, rescaling, random flip, and random rotation to preprocess the input images. Additionally, a Convolutional Neural Network (CNN) architecture is implemented, comprising convolutional layers, pooling layers, and dense layers with adjustable filters/units and activation functions.
+   - **Model Building:** Construct the model architecture using Keras, incorporating layers for resizing, rescaling, random flip, and random rotation to preprocess the input images. Additionally, a Convolutional Neural Network (CNN) architecture is implemented, comprising convolutional layers, pooling layers, and dense layers with adjustable filters/units and activation functions.
 
    - **Training:** During model training, we utilize the `Adam` optimizer, `sparse_categorical_crossentropy` loss function, and `Accuracy` metrics to optimize and evaluate the model's performance. The training process involves evaluating the model's performance on the validation dataset after each epoch, culminating in a final evaluation on the testing dataset. Upon completion of training, the model achieves an impressive accuracy of **95.8%**, signifying its capability to accurately classify potato disease images.
 
